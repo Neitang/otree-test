@@ -1,0 +1,22 @@
+{{ block title }}
+    結果の確認
+{{ endblock }}
+
+{{ block content }}
+<p>
+    このラウンド開始時、あなたは保有額として<b>{{player.prev_payoff}}</b>を持っていました.<br>
+    その中から<b>{{player.contribution}}</b>を貢献しました.<br>
+    あなたのグループでは全員で<B>{{group.total_contribution}}</B>を貢献していました.<br>
+    この<B>{{group.total_contribution}}</B>を{{C.MULTIPLIER}}倍したものを{{C.PLAYERS_PER_GROUP}}で割ったポイントが各自に返されます.<br>
+    その結果, 一人あたり<b>{{group.individual_share}}</b>が渡されました.<br>
+</p>
+<p>
+    <B>{{player.prev_payoff}} - {{player.contribution}} + {{group.individual_share}} = {{player.payoff}}</B>
+</p>
+<p>
+    したがって,　あなたの獲得ポイントは<b>{{player.payoff}}</b>です.
+</p>
+    {{ next_button }}
+{{ endblock }}
+
+

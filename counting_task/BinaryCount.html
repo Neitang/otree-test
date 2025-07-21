@@ -1,0 +1,19 @@
+{{ block title }}
+    デモ画面
+{{ endblock }}
+{{ block content }}
+    <h3>'{{ target }}'はいくつあるでしょうか?</h3>
+    <table style="font-family: monospace; font-size: 18px;">
+        {{ for row in rows }}
+            <tr>
+                {{ for item in row }}
+                    <td style="padding:5px">{{ item }}</td>
+                {{ endfor }}
+            </tr>
+        {{ endfor }}
+    </table>
+    <br>
+    {{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}
