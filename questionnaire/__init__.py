@@ -1,4 +1,3 @@
-from ipywidgets.widgets import widget
 from otree.api import *
 
 
