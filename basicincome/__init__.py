@@ -78,6 +78,25 @@ class Player(BasePlayer):
                                     label='occupation'
                                     )
 
+    # SVOスライダー作成で用いる
+    svo1_self = models.IntegerField(min=0, max=100)
+    svo1_other = models.IntegerField(min=0, max=100)
+
+    svo2_self = models.IntegerField(min=0, max=100)
+    svo2_other = models.IntegerField(min=0, max=100)
+
+    svo3_self = models.IntegerField(min=0, max=100)
+    svo3_other = models.IntegerField(min=0, max=100)
+
+    svo4_self = models.IntegerField(min=0, max=100)
+    svo4_other = models.IntegerField(min=0, max=100)
+
+    svo5_self = models.IntegerField(min=0, max=100)
+    svo5_other = models.IntegerField(min=0, max=100)
+
+    svo6_self = models.IntegerField(min=0, max=100)
+    svo6_other = models.IntegerField(min=0, max=100)
+
 # PAGES
 class Introduction(Page):
     form_model = 'player'
@@ -89,6 +108,22 @@ class Question(Page):
         'q_gender', 'q_age', 'q_tanmatsu', 'q_income', 'q_occupation'
     ]
 
+class SVOslider(Page):
+    form_model = 'player'
+    form_fields = [
+        'svo1_self', 'svo1_other',
+        'svo2_self', 'svo2_other',
+        'svo3_self', 'svo3_other',
+        'svo4_self', 'svo4_other',
+        'svo5_self', 'svo5_other',
+        'svo6_self', 'svo6_other',
+    ]
+    # 送信直前にサーバ側でバリデーションしたい場合はここで
+    def error_message(self, values):
+        # 例：未設定（None）があれば弾く
+        missing = [k for k, v in values.items() if v is None]
+        if missing:
+            return '未回答の項目があります。全てのスライダーを一度動かしてください。'
 
 class ResultsWaitPage(WaitPage):
     pass
@@ -98,4 +133,4 @@ class Results(Page):
     pass
 
 
-page_sequence = [Introduction, Question]
+page_sequence = [Introduction, Question, SVOslider]
