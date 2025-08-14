@@ -1,0 +1,195 @@
+{% block title %}社会的価値観（SVO）の測定{% endblock %}
+
+{% block content %}
+
+<style>
+  .wrap { max-width: 900px; margin: 0 auto; line-height: 1.6; }
+  .item { border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin: 16px 0; background: #fff; }
+  .row { display: grid; grid-template-columns: 1fr 240px; gap: 16px; align-items: center; }
+  .nums { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+  .nums div { width: 48%; padding: 6px 8px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; text-align: center; }
+  .hint { color: #6b7280; font-size: .95rem; margin: 8px 0; }
+  .label { font-weight: 600; margin-bottom: 6px; }
+  .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+  .btn-primary { background: #2563eb; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
+  input[type="range"] { width: 100%; }
+  @media (max-width: 640px){
+    .row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+  <h2>社会的価値観（SVO）</h2>
+  <p>
+    あなたと、仮想の相手の2人にポイントが配られます。各スライダーを動かし、<strong>自分</strong>と<strong>相手</strong>のポイントの組み合わせを選択してください。
+    正解・不正解はありません。直感に従ってお答えください。
+  </p>
+  <p class="hint">スライダーの位置に応じて「自分」「相手」のポイントが自動で更新されます。</p>
+
+  {# ====== 各項目のコンフィグ（端点） ======
+     JS内の endpoints 配列と対応。必要なら数値を調整してください。
+     例：Q1 自分: 85→50, 相手: 15→100 （t: 0→100 で線形に変化）
+  #}
+
+  <!-- Q1 -->
+  <div class="item" data-item="1">
+    <div class="label">Q1. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：85→50／相手：15→100）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <!-- 送信用のhidden -->
+    <input type="hidden" name="svo1_self">
+    <input type="hidden" name="svo1_other">
+  </div>
+
+  <!-- Q2 -->
+  <div class="item" data-item="2">
+    <div class="label">Q2. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：80→50／相手：20→100）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <input type="hidden" name="svo2_self">
+    <input type="hidden" name="svo2_other">
+  </div>
+
+  <!-- Q3 -->
+  <div class="item" data-item="3">
+    <div class="label">Q3. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：50→85／相手：100→15）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <input type="hidden" name="svo3_self">
+    <input type="hidden" name="svo3_other">
+  </div>
+
+  <!-- Q4 -->
+  <div class="item" data-item="4">
+    <div class="label">Q4. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：100→50／相手：50→100）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <input type="hidden" name="svo4_self">
+    <input type="hidden" name="svo4_other">
+  </div>
+
+  <!-- Q5 -->
+  <div class="item" data-item="5">
+    <div class="label">Q5. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：50→100／相手：100→50）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <input type="hidden" name="svo5_self">
+    <input type="hidden" name="svo5_other">
+  </div>
+
+  <!-- Q6 -->
+  <div class="item" data-item="6">
+    <div class="label">Q6. ポイントの配分を選んでください</div>
+    <div class="row">
+      <div>
+        <div class="nums">
+          <div>自分：<span class="self-val">—</span></div>
+          <div>相手：<span class="other-val">—</span></div>
+        </div>
+        <div class="hint">（自分：100→50／相手：50→100）</div>
+      </div>
+      <div>
+        <input type="range" min="0" max="100" step="1" value="50" class="slider">
+      </div>
+    </div>
+    <input type="hidden" name="svo6_self">
+    <input type="hidden" name="svo6_other">
+  </div>
+
+  <div class="footer">
+    <div class="hint">すべてのスライダーを一度は動かしてください。</div>
+    {{ next_button }}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // 各項目の端点（start_self, end_self, start_other, end_other）
+  // t ∈ [0,100] で線形補間: self = round(sS + (eS - sS) * t/100)
+  const endpoints = {
+    1: { sS:85, sE:50, oS:15, oE:100 },
+    2: { sS:80, sE:50, oS:20, oE:100 },
+    3: { sS:50, sE:85, oS:100, oE:15 },
+    4: { sS:100, sE:50, oS:50,  oE:100 },
+    5: { sS:50,  sE:100,oS:100, oE:50  },
+    6: { sS:100, sE:50, oS:50,  oE:100 },
+  };
+
+  // 初期化：各スライダーの表示とhiddenの値
+  document.querySelectorAll('.item').forEach(item => {
+    const itemNo = item.getAttribute('data-item');
+    const cfg = endpoints[itemNo];
+    const slider = item.querySelector('.slider');
+    const selfSpan = item.querySelector('.self-val');
+    const otherSpan = item.querySelector('.other-val');
+    const selfHidden = item.querySelector('input[type="hidden"][name="svo' + itemNo + '_self"]');
+    const otherHidden = item.querySelector('input[type="hidden"][name="svo' + itemNo + '_other"]');
+
+    function recompute(){
+      const t = Number(slider.value); // 0..100
+      const selfVal  = Math.round(cfg.sS + (cfg.sE - cfg.sS) * (t/100));
+      const otherVal = Math.round(cfg.oS + (cfg.oE - cfg.oS) * (t/100));
+      selfSpan.textContent  = selfVal;
+      otherSpan.textContent = otherVal;
+      selfHidden.value  = selfVal;
+      otherHidden.value = otherVal;
+    }
+
+    slider.addEventListener('input', recompute);
+    // 初期反映（中央から）
+    recompute();
+  });
+});
+</script>
+
+{% endblock %}
