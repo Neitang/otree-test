@@ -25,6 +25,18 @@ SESSION_CONFIGS = [
         display_name = "01カウントゲーム",
         num_demo_participants = 2,
         app_sequence = ['counting_task']
+    ),
+    dict(
+        name = 'dictator_game',
+        display_name = "独裁者ゲーム",
+        num_demo_participants = 2,
+        app_sequence = ['dictator_trial']
+    ),
+    dict(
+        name = 'basic_income',
+        display_name = "労働供給調査",
+        num_demo_participants = 1,
+        app_sequence = ['basicincome']
     )
 ]
 
@@ -63,3 +75,5 @@ ROOMS = [
 DEMO_PAGE_INTRO_HTML = """ """
 
 SECRET_KEY = '4009486563986'
+
+DEBUG = False

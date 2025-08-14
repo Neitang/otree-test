@@ -1,0 +1,37 @@
+{{ block title }}
+    アンケート①
+{{ endblock }}
+
+{{ block content }}
+
+<style>
+  .consent-container { max-width: 880px; margin: 0 auto; line-height: 1.8; }
+  .lead { font-size: 1.05rem; }
+  h2, h3 { margin-top: 1.2em; }
+  .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; background: #fff; }
+  .muted { color: #6b7280; }
+  .list-tight li { margin: .4em 0; }
+  .ack-list { list-style: none; padding-left: 0; }
+  .ack-list li { margin: .6em 0; }
+  .ack-list input { transform: translateY(2px); margin-right: .5em; }
+  .notice { background: #f9fafb; border-left: 4px solid #3b82f6; padding: 12px 14px; border-radius: 6px; }
+  .btn-row { display: flex; gap: 12px; margin-top: 16px; }
+  .btn-primary { background: #2563eb; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
+  .btn-secondary { background: #e5e7eb; color: #111827; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
+  .btn-primary[disabled] { opacity: .5; cursor: not-allowed; }
+  .highlight {color: blueviolet; }
+  details summary { cursor: pointer; }
+</style>
+
+<div class="consent-container">
+    <h2>ご自身に関する質問</h2>
+    <p class="lead">
+        以下の質問に全てお答えください。
+    </p>
+    <div class="card">
+        {{ formfields }}
+    </div>
+</div>
+    {{ next_button }}
+
+{{ endblock }}

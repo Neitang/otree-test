@@ -1,0 +1,142 @@
+{% block title %}インフォームド・コンセント{% endblock %}
+
+{% block content %}
+
+<style>
+  .consent-container { max-width: 880px; margin: 0 auto; line-height: 1.8; }
+  .lead { font-size: 1.05rem; }
+  h2, h3 { margin-top: 1.2em; }
+  .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; background: #fff; }
+  .muted { color: #6b7280; }
+  .list-tight li { margin: .4em 0; }
+  .ack-list { list-style: none; padding-left: 0; }
+  .ack-list li { margin: .6em 0; }
+  .ack-list input { transform: translateY(2px); margin-right: .5em; }
+  .notice { background: #f9fafb; border-left: 4px solid #3b82f6; padding: 12px 14px; border-radius: 6px; }
+  .btn-row { display: flex; gap: 12px; margin-top: 16px; }
+  .btn-primary { background: #2563eb; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
+  .btn-secondary { background: #e5e7eb; color: #111827; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
+  .btn-primary[disabled] { opacity: .5; cursor: not-allowed; }
+  .highlight {color: blueviolet; }
+  details summary { cursor: pointer; }
+</style>
+
+<div class="consent-container">
+  <h2>研究参加に関するご案内（インフォームド・コンセント）</h2>
+  <p class="lead">
+    本研究は、意思決定や行動に関する学術的知見の蓄積を目的として実施されます。ご参加は<strong>完全に任意</strong>であり、いつでも不利益なく中止できます。
+    内容をご確認のうえ、参加に同意される場合のみ先へお進みください。
+  </p>
+
+  <div class="card">
+    <h3>1. 研究の目的</h3>
+    <p>本研究は、特定の条件における意思決定や行動特性（社会的価値観・リスク選好等）を調査し、労働意欲の理解を深めることを目的とします。</p>
+
+    <h3>2. 参加内容と所要時間</h3>
+    <ul class="list-tight">
+      <li>属性調査：年齢、性別、職業などの回答（1分）</li>
+      <li>社会的価値観の測定（1分）</li>
+      <li>リスク選好の測定（1分）</li>
+      <li>その後、タスクに関する説明と本タスク（所要時間は全体でおよそ<strong>約○分</strong>）</li>
+    </ul>
+
+    <h3>3. 予想される負担・不利益</h3>
+    <p>心理的・身体的リスクは最小限と想定していますが、質問への回答に負担を感じる可能性があります。気分がすぐれない場合は、<strong>いつでも中止</strong>いただけます。</p>
+
+    <h3>4. 期待される便益</h3>
+    <p>直接的な利益は限定的ですが、研究成果は学術・政策検討に資する可能性があります。</p>
+
+    <h3>5. 謝礼について</h3>
+    <p>
+      謝礼は、参加状況・タスク結果に応じて支給されます。謝礼の内訳や条件は、この後のページで具体的にご説明します。
+      中止された場合も、規定に基づき<strong>中止時点までの謝礼</strong>をお支払いします。<br>
+      <span class="highlight">  ネットワークエラーで実験が中止しちゃったときはどうしよう</span>
+    </p>
+
+    <h3>6. 個人情報の取扱い</h3>
+    <ul class="list-tight">
+      <li>回答データは匿名化・統計的に集計し、個人が特定される形で公開されることはありません。</li>
+      <li>取得した情報は研究目的のみに使用し、適切に管理・保存します。</li>
+      <li>研究成果は学会発表・論文等で公表される場合がありますが、個人が特定されることはありません。</li>
+    </ul>
+
+    <h3>7. 参加の自由と中止</h3>
+    <p>参加は任意であり、<strong>理由を問わずいつでも中止</strong>できます。中止による不利益はありません。</p>
+
+    <h3>8. 問い合わせ先</h3>
+    <p class="muted">
+      研究責任者：内藤晃史（東北大学文学研究科 行動科学研究室）<br>
+      連絡先：naito.akihito.r6@dc.tohoku.ac.jp, 080-6755-6797<br>
+      倫理審査番号：＿＿＿＿＿＿＿＿（該当する場合）
+    </p>
+  </div>
+
+  <div class="notice" style="margin-top: 16px;">
+    <strong>ご確認ください</strong>：以下の各項目にチェックを入れたうえで、参加への同意を選択してください。
+  </div>
+
+  <!-- 確認チェック（oTreeのフィールド名例：read_all） -->
+  <ul class="ack-list">
+    <li>
+      <label>
+        <input type="checkbox" id="read_all" name="read_all" value="yes" required>
+        上記の説明を読み、内容を理解しました。
+      </label>
+    </li>
+  </ul>
+
+  <!-- 同意の取得（oTreeのフィールド名例：consent） -->
+  <div class="card">
+    <h3>参加に同意しますか？</h3>
+    <label>
+      <input type="radio" name="consent" value="yes" required>
+      同意する（研究に参加します）
+    </label><br>
+    <label>
+      <input type="radio" name="consent" value="no">
+      同意しない（研究に参加しません）
+    </label>
+  </div>
+
+  <details style="margin-top: 10px;">
+    <summary>プライバシー等の詳細（クリックして展開）</summary>
+    <p class="muted">
+      データの保存期間、第三者提供の有無、保管サーバの所在、撤回時のデータ取り扱いなどを記載予定。
+    </p>
+  </details>
+
+  <!-- アクション -->
+  <div class="btn-row">
+    <button id="nextbtn" type="submit" class="btn-primary" disabled>次へ進む</button>
+    <a class="btn-secondary" href="#" onclick="window.location.href='about:blank'; return false;">中止する</a>
+  </div>
+
+  <p class="muted" style="margin-top: 12px;">
+    「次へ進む」を押すことで、上記の条件に同意し、実験参加に進むことに同意したものとみなされます。
+    <span class="highlight">  実験を中止したいときのフローをどうするか確認</span>
+  </p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const readAll = document.querySelector('input[name="read_all"]');
+  const consentRadios = Array.from(document.querySelectorAll('input[name="consent"]'));
+  const nextbtn = document.getElementById('nextbtn');
+
+  function update(){
+    if (!nextbtn) return; // 念のため
+    const readOk = !!(readAll && readAll.checked);
+    const consentOk = consentRadios.some(r => r.checked && r.value === 'yes');
+    nextbtn.disabled = !(readOk && consentOk);
+  }
+
+  // 変化を監視（要素が無い場合に備えて存在チェック）
+  if (readAll) readAll.addEventListener('change', update);
+  consentRadios.forEach(r => r.addEventListener('change', update));
+
+  // 初期状態を反映
+  update();
+});
+</script>
+
+{% endblock %}

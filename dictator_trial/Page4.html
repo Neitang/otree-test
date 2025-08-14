@@ -1,0 +1,15 @@
+{{ block title }}
+    結果の確認
+{{ endblock }}
+{{ block content }}
+    <p>
+        プレイヤー1に対して初期保有額として<B>{{C.ENDOWMENT}}</B>が渡されました.<br>
+        プレイヤー1はプレイヤー2に対して<B>{{ group.proposal }}</B>を渡すこととしました.<br>
+
+    </p>
+    <p>
+        その結果, あなたは<B> {{ player.payoff }}</B>を獲得しました.
+    </p>
+    {{ formfields }}
+    {{ next_button }}
+{{ endblock }}
